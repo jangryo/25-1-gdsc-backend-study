@@ -1,7 +1,6 @@
 # 고급 백엔드 스터디 6주차
 
-
-## Implementing B-Trees
+## Chapter 4. Implementing B-Trees
 
 
 ### 지난 장 복습
@@ -60,10 +59,10 @@ B-Tree 구조에 특화된 구현 및 최적화 기법을 이해하는 데 초�
 
 
 
-## Page Header
-
-
 ### Page Header
+
+
+#### Page Header
 
 - 페이지 헤더: 디스크나 메모리 페이지 상단에 위치하며, 해당 페이지의 메타 정보를 담은 관리용 데이터 구조이다.
 
