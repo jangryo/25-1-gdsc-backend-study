@@ -1,8 +1,8 @@
 # 고급 백엔드 스터디 7주차
 
-## Chapter 4. Implementing B-Trees
+# Chapter 4. Implementing B-Trees
 
-### Rebalancing
+## Rebalancing
 
 단순히 삽입/삭제할 때마다 바로 분할이나 병합을 하지 않고, 최대한 지연시켜 전체적인 트리의 구조 변경 비용을 줄이는 것이 핵심 전략이다.
 
@@ -70,7 +70,7 @@ SQLite는 이 B*-Tree 방식의 구현을 사용하고 있으며, 이는 그만�
 
 
 
-### Right-Only Appends
+## Right-Only Appends
 
 - 단조 증가 키(monotonically increasing keys):
     - 예: 1, 2, 3, ...처럼 계속 증가하는 키 값
@@ -131,7 +131,7 @@ SQLite의 quickbalance는 fastpath와 비슷한 목적(빠른 오른쪽 삽입 �
 
 
 
-#### Bulk Loading
+### Bulk Loading
 
 데이터가 1, 2, 3, 4, 5, ... 같은 순서로 이미 정렬되어 있는 경우를 생각해보자.
 이를 일괄 로드(bulk load)하거나, 트리를 재구성(Rebuild)해야 하는 경우, 오른쪽에만 삽입하는 아이디어를 더욱 확장할 수 있다. 
@@ -203,7 +203,7 @@ SQLite의 quickbalance는 fastpath와 비슷한 목적(빠른 오른쪽 삽입 �
 
 
 
-### Compression
+## Compression
 
 - 압축 필요성:
     - 원시(raw) 데이터는 저장 공간을 많이 차지한다.
@@ -283,7 +283,7 @@ SQLite의 quickbalance는 fastpath와 비슷한 목적(빠른 오른쪽 삽입 �
 
 
 
-### Vacuum and Maintenance
+## Vacuum and Maintenance
 
 지금까지는 주로 B-Tree에서 사용자에게 노출되는 연산에 대해 다뤘다. 하지만 쿼리와 병렬로 실행되면서 저장소의 무결성을 유지하고, 공간을 회수하며, 오버헤드를 줄이고, 페이지 정렬을 유지하는 다른 프로세스들도 존재한다. 이러한 작업들을 백그라운드에서 수행하면, 삽입, 갱신, 삭제 중에 정리 작업의 비요을 지불하지 않아도 되므로 시간을 절약할 수 있다.
 
@@ -316,5 +316,5 @@ B-Tree에서 루트로부터 도달할 수 없는 데이터는 죽은 데이터�
 
 그림 4-11에서 이러한 구분을 확인활 수 있다. 여전히 포인터가 연결되어 있는 셀들은 참조 가능(addressable)하며, 삭제되었거나 덮어쓰여진 셀들과는 다르다. 가비지 영역을 0으로 채우는 작업(zero-filling)은 성능상의 이유로 종종 생략된다. 어차피 이 영역은 나중에 새로운 데이터로 덮어쓰이기 때문이다. 
 
-#### Fragementation Caused by Updates and Deletes
+### Fragementation Caused by Updates and Deletes
 
